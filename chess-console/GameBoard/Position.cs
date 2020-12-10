@@ -3,18 +3,18 @@
     class Position
     {
        
-        public int Row { get; set; }
+        public int Line { get; set; }
         public int Column { get; set; }
     
-        public Position(int Row, int Column)
+        public Position(int Line, int Column)
         {
-            this.Row = Row;
+            this.Line = Line;
             this.Column = Column;
         }
 
         public override string ToString()
         {
-            return Row + ", " + Column;
+            return Line + ", " + Column;
         }
     }
 }
