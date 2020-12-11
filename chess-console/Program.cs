@@ -8,10 +8,22 @@ namespace chess_console
     {
         static void Main(string[] args)
         {
-            PositionChess pos = new PositionChess('a', 3);
+            try { 
+            Board board = new Board(8, 8);
 
-            Console.WriteLine(pos);
-            Console.WriteLine(pos.ToPosition());
+
+            board.PutPiece(new Rook(board, Color.Black), new Position(0, 0));
+            board.PutPiece(new Rook(board, Color.White), new Position(1, 3));
+            board.PutPiece(new King(board, Color.Black), new Position(2, 4));
+            board.PutPiece(new King(board, Color.White), new Position(4, 1));
+
+
+                Screen.PrinterBoard(board);
+            }
+            catch(BoardExecption e)
+            {
+                Console.WriteLine(e.Message);
+            }
 
             Console.ReadLine();
         

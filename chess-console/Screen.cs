@@ -12,6 +12,11 @@ namespace chess_console
             //Dessa forma irie percorre minhas linhas do tabuleiro
             for (int i = 0; i < board.Lines; i++)
             {
+                /*Inicio de cada linha deve aparecer o numero que vai de 1 a 8
+                Mas meu for vai de 0 a 7 da mesma forma que minha matriz
+                então p macete é fazer 8 - i. Se i = 1 então sera 8-1 = 7 assim entrando de acordo com a matriz
+                 */
+                Console.Write(8-i + " ");
                 //E em seguida percorrer as colunas dele
                 for (int j = 0; j < board.Columns; j++)
                 {
@@ -23,13 +28,33 @@ namespace chess_console
                     else
                     {
                         //Basicamente será feito a impressão de uma peça um espaco em branco
-
-                        Console.Write(board.Piece(i, j) + " ");
+                        PrinterPiece(board.Piece(i, j));
+                        Console.Write(" ");
                     }
 
                 }
                 //Apos preencher todas as linhas da primeira coluna ele quebra a linha
                 Console.WriteLine();
+            }
+            //Para as colunas no xadrez basta apenas alinhas manualmente
+            Console.WriteLine("  a b c d e f g h");
+        }
+
+        //Coloração da peça preto ou branco
+        public static void PrinterPiece(Piece piece)
+        {
+            if(piece.Color == Color.White)
+            {
+                Console.Write(piece);
+
+            }
+            else
+            {
+                //Tipo do c# que pega a cor do sistema
+                ConsoleColor aux = Console.ForegroundColor; //pegar a cor da variavel
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.Write(piece);
+                Console.ForegroundColor = aux;
             }
         }
     }
